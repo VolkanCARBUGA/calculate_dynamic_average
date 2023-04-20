@@ -1,3 +1,4 @@
+import 'package:calculate_dynamic_average/average_calculate.dart';
 import 'package:calculate_dynamic_average/constants/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -10,15 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Ortalama Hesapla',
-      theme: ThemeData(primaryColor: Constants.mainColor),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        
+        primaryColor: Constants.mainColor,
+        visualDensity: VisualDensity.adaptivePlatformDensity
         ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      home: const AverageCalculate(),
     );
   }
 }
