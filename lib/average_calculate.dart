@@ -37,61 +37,65 @@ class _AverageCalculateState extends State<AverageCalculate> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-               myForm(),
-              AverageView(
-                lessonNumber: allLesson.length,
-                average: ortalamaHesapla(),
-
+           Expanded(child:  myForm()) ,  
+              Expanded(
+                child: AverageView(
+                  lessonNumber: allLesson.length,
+                  average: ortalamaHesapla(),
+              
+                ),
               )
             ],
           ),
-          allLesson.length > 0
-              ? ListView.builder(
-                shrinkWrap: true,
-                  itemBuilder: (context, index) => Dismissible(
-                    key: UniqueKey(),
-                    direction: DismissDirection.startToEnd,
-                    onDismissed: (a) {
-                      setState(() {
-                        allLesson.removeAt(index);
-                      });
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(2),
-                      child: Card(
-                        child: ListTile(
-                          title: Text(allLesson[index].name),
-                          leading: CircleAvatar(
-                            backgroundColor: Constants.mainColor,
-                            child: Text('' +
-                                (allLesson[index].creditValue *
-                                        allLesson[index].letterValue)
-                                    .toStringAsFixed(0)),
+          Expanded(
+            child: allLesson.length > 0
+                ? ListView.builder(
+                  shrinkWrap: true,
+                    itemBuilder: (context, index) => Dismissible(
+                      key: UniqueKey(),
+                      direction: DismissDirection.startToEnd,
+                      onDismissed: (a) {
+                        setState(() {
+                          allLesson.removeAt(index);
+                        });
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.all(2),
+                        child: Card(
+                          child: ListTile(
+                            title: Text(allLesson[index].name),
+                            leading: CircleAvatar(
+                              backgroundColor: Constants.mainColor,
+                              child: Text('' +
+                                  (allLesson[index].creditValue *
+                                          allLesson[index].letterValue)
+                                      .toStringAsFixed(0)),
+                            ),
+                            subtitle: Text(
+                                '${allLesson[index].creditValue} Kredi, Not Değeri ${allLesson[index].letterValue}'),
                           ),
-                          subtitle: Text(
-                              '${allLesson[index].creditValue} Kredi, Not Değeri ${allLesson[index].letterValue}'),
+                        ),
+                      ),
+                    ),
+                    itemCount: allLesson.length,
+                  )
+                : Container(
+                    margin: EdgeInsets.all(24),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                          child: Text('Lütfen ders ekleyiniz',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headline5!
+                                  .copyWith(color: Constants.mainColor)),
                         ),
                       ),
                     ),
                   ),
-                  itemCount: allLesson.length,
-                )
-              : Container(
-                  margin: EdgeInsets.all(24),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                        child: Text('Lütfen ders ekleyiniz',
-                            style: Theme.of(context)
-                                .textTheme
-                                .headline5!
-                                .copyWith(color: Constants.mainColor)),
-                      ),
-                    ),
-                  ),
-                ),
+          ),
         ],
       ),
     );
