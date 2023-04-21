@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Constants {
-  static const mainColor = Colors.indigo;
+  static const mainColor = Colors.amber;
   static final TextStyle tittleStyle = GoogleFonts.aBeeZee(
       color: mainColor, fontSize: 24, fontWeight: FontWeight.w900);
   static BorderRadius borderRadius =

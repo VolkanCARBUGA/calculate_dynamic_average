@@ -16,6 +16,7 @@ class AverageView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
+            
             lessonNumber>0?"$lessonNumber Ders girildi":"Ders seçiniz",style: Constants.lessonNumberStyle,
           ),
           Text(
